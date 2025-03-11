@@ -6,25 +6,47 @@
     <title>Pizza Order Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f8f8;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffcc00;
             text-align: center;
             padding: 20px;
         }
+        h2 {
+            color: #b22222;
+        }
         form {
-            background: white;
+            background: #fff3e0;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             display: inline-block;
+            width: 300px;
+        }
+        label, select, input {
+            margin: 5px 0;
+        }
+        button {
+            background-color: #b22222;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #8b0000;
         }
         .output {
             margin-top: 20px;
             padding: 15px;
             background: #fff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             display: inline-block;
+            font-weight: bold;
+            color: #b22222;
         }
     </style>
 </head>
@@ -52,7 +74,7 @@
             <option value="Thick">Thick</option>
             <option value="Stuffed">Stuffed</option>
         </select>
-        <br>1<br>
+        <br><br>
         <button type="button" onclick="orderPizza()">Order</button>
     </form>
     
