@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            text-align: center;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Your Pizza</h2>
+    <p id="student-info"></p>
+    <form id="pizzaForm">
+        <label for="size">Choose size:</label>
+        <select id="size" required>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+        <br><br>
+        <label>Choose toppings:</label><br>
+        <input type="checkbox" value="Cheese">Cheese
+        <input type="checkbox" value="Pepperoni">Pepperoni
+        <input type="checkbox" value="Mushrooms">Mushrooms
+        <input type="checkbox" value="Olives">Olives
+        <input type="checkbox" value="Peppers">Peppers
+        <br><br>
+        <label for="crust">Choose crust type:</label>
+        <select id="crust" required>
+            <option value="Thin">Thin</option>
+            <option value="Thick">Thick</option>
+            <option value="Stuffed">Stuffed</option>
+        </select>
+        <br><br>
+        <button type="button" onclick="orderPizza()">Order</button>
+    </form>
+    
+    <div id="orderOutput" class="output"></div>
+    
+    <script>
+        document.getElementById("student-info").innerText = "Student: ANTHONY BURGIC (ID: 200564553)";
+
+        class Pizza {
+            constructor(size, crust, toppings) {
+                this.size = size;
+                this.crust = crust;
+                this.toppings = toppings;
+            }
+
+            getDescription() {
+                return `You ordered a ${this.size} pizza with ${this.crust} crust and toppings: ${this.toppings.join(", ")}.`;
+            }
+        }
+
+        function orderPizza() {
+            const size = document.getElementById("size").value;
+            const crust = document.getElementById("crust").value;
+            const toppings = [...document.querySelectorAll("input[type='checkbox']:checked")].map(t => t.value);
+
+            if (!size || !crust) {
+                alert("Please select size and crust type.");
+                return;
+            }
+
+            const pizza = new Pizza(size, crust, toppings.length ? toppings : ["No toppings"]);
+            document.getElementById("orderOutput").innerText = pizza.getDescription();
+        }
+    </script>
+</body>
+</html>
